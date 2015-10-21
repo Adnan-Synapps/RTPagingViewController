@@ -498,6 +498,11 @@
     controller.view.hidden = NO;
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.scrollView addSubview:controller.view];
+    
+    if (self.pageHandler) {
+        self.pageHandler(index);
+    }
+    
     return controller;
 }
 

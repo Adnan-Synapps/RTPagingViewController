@@ -20,6 +20,7 @@
 @property (nonatomic, assign) UIOffset titleOffset;
 @end
 */
+typedef void(^RTPageHandler)(NSInteger currentIndex);
 
 IB_DESIGNABLE
 @interface RTPagingViewController : UIViewController
@@ -41,7 +42,7 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIColor *selectedTitleColor;
 @property (nonatomic, strong) IBInspectable UIFont *titleFont;
 @property (nonatomic, assign) IBInspectable CGFloat titleViewHeight;
-
+@property (nonatomic, copy) RTPageHandler pageHandler;
 - (instancetype)initWithController:(NSArray *)controllers;
 
 - (void)setControllers:(NSArray *)controllers animated:(BOOL)animated;
