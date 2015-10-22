@@ -56,14 +56,20 @@
     pagingViewController.controllers = [NSArray arrayWithObjects:c0, c1, c2, c3, nil];
     pagingViewController.currentControllerIndex = 2;
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pagingViewController setControllers:@[c0, c2, c3] animated:NO];
-        pagingViewController.currentControllerIndex = 0;
-    });
-
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pagingViewController appendPage:c1];
-    });
+    pagingViewController.pageHandler = ^(NSInteger index){
+    
+    
+        NSLog(@"Index %ld",index);
+    };
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [pagingViewController setControllers:@[c0, c2, c3] animated:NO];
+//        pagingViewController.currentControllerIndex = 0;
+//    });
+//
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [pagingViewController appendPage:c1];
+//    });
 
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:pagingViewController];
     nav.navigationBar.barStyle = UIBarStyleBlackTranslucent;

@@ -372,6 +372,11 @@
     _previousController = nil;
     _nextController = nil;
 
+    if (self.pageHandler) {
+        self.pageHandler(self.currentControllerIndex);
+    }
+    
+
 }
 
 - (void)updateOffset
@@ -499,11 +504,7 @@
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.scrollView addSubview:controller.view];
     
-    if (self.pageHandler) {
-        self.pageHandler(index);
-    }
-    
-    return controller;
+       return controller;
 }
 
 - (BOOL)isControllerVisible:(UIViewController *)controller
@@ -712,6 +713,7 @@
                              [self loadTitles];
                              [self updateTitleSelection];
                              [self.view setNeedsLayout];
+                         
                          }];
     }
 }
